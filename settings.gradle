@@ -1,0 +1,18 @@
+pluginManagement {
+    def jfrogUser = System.getenv().get('ARTIFACT_REPO_USERNAME')
+    def jfrogKey = System.getenv().get('ARTIFACT_REPO_PASSWORD')
+
+    repositories {
+        mavenLocal()
+        maven {
+            url "https://ford.jfrog.io/artifactory/cvc-maven-preview/"
+            credentials {
+                username = jfrogUser
+                password = jfrogKey
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+rootProject.name = 'demo-otel'
