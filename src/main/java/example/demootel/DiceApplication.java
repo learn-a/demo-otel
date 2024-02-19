@@ -10,6 +10,7 @@ import io.opentelemetry.exporter.logging.LoggingSpanExporter;
 import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 import io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender;
 import io.opentelemetry.sdk.OpenTelemetrySdk;
+import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
 import io.opentelemetry.sdk.logs.SdkLoggerProvider;
 import io.opentelemetry.sdk.logs.export.BatchLogRecordProcessor;
 import io.opentelemetry.sdk.metrics.SdkMeterProvider;
@@ -33,7 +34,7 @@ public class DiceApplication {
 
     @Bean
     public OpenTelemetry openTelemetry() {
-        Resource resource = Resource.getDefault().toBuilder()
+/*        Resource resource = Resource.getDefault().toBuilder()
                 .put(ResourceAttributes.SERVICE_NAME, "dice-server").put(ResourceAttributes.SERVICE_VERSION, "0.1.0").build();
 
         SdkTracerProvider sdkTracerProvider = SdkTracerProvider.builder()
@@ -59,7 +60,7 @@ public class DiceApplication {
                 .buildAndRegisterGlobal();
 
         OpenTelemetryAppender.install(openTelemetrySdk);
-        return openTelemetrySdk;
-//        return AutoConfiguredOpenTelemetrySdk.initialize().getOpenTelemetrySdk();
+        return openTelemetrySdk;*/
+        return AutoConfiguredOpenTelemetrySdk.initialize().getOpenTelemetrySdk();
     }
 }
